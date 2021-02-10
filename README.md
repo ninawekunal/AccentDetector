@@ -28,7 +28,11 @@
  
  **Questions?:**
   - How to label the data? Basically we need to know at what time stamp a particular word is being said. 
+      - How to get those timestamp of each word in each audio file under each accent?
   - What can we do about the remaining words which are not in the dataset? 
   - Which models should we use to train and predict? 
   - How can we process the audio files first to tailor it to our model? (Data Processing)
+  - How to improve accuracy of the model and tailor it to detect more words?
+      - Can we add more words to our dataset like for instance: If a user speaks something, store all those words under corresponding accent class.
+  
   
