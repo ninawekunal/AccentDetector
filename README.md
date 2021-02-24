@@ -35,4 +35,7 @@
   - How to improve accuracy of the model and tailor it to detect more words?
       - Can we add more words to our dataset like for instance: If a user speaks something, store all those words under corresponding accent class.
   
-  
+  **Resources relevant to the project:** 
+  https://www.youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0 : Audio Processing for Machine Learning.
+  https://www.youtube.com/watch?v=fMqL5vckiU0&list=PL-wATfeyAMNrtbkCNsLcpoAyBBRJZVlnf&ab_channel=ValerioVelardo-TheSoundofAI: Audio Processing for Deep Learning with Python
+
