@@ -112,7 +112,27 @@ This table compares different models and its metrics.
  - Using *Adam* optimizer to compile and run for 30 epochs.
  - Metrics: Accuracy of **68%** on test data. (Performed really poorly on real data sample.)
  
-  
+## **Techniques used to handle imbalanced data:**
+Before, the data was heavily imbalanced, and training an SVC just gave an accuracy of 59% with extremely poor f1-scores for each accent.
+To handle the imbalance in our dataset, I used techniques like: 
+1. **SMOTE:** (Synthetic Minority Over-Sampling Technique)
+ - addresses imbalanced datasets by oversampling the minority class. 
+ - The simplest approach involves duplicating examples in the minority class, although these examples don’t add any new information to the model. 
+ - Instead, new examples can be synthesized from the existing examples.
+**Results:** SMOTE improved accuracy from 59% to around 65%. (Better, but not acceptable.)
+2. **Undersampling:**
+ - reduces the samples of American(373) to 110 and then trained SVC.
+**Results:** Extremely poor accuracy of 41% with poor f1-scores.
+3. **Oversampling:**:
+ - Duplicate samples of minority classes to match close to american samples.
+ - Get a Duplication ratio: i.e. 373/373 = 1, 373/110 = 3, 373/88 = 4, 373/65=5
+ - Dupliate each sample by this duplication ratio.
+**Results:** Give a really good training accuracy of 90%, but performed subpar on test data. 
+5. **Oversampling with Noise:**
+ - Duplicate samples of minority class in a similar way as above, but
+ - Extract a random gaussian noise from the signal, and add it to the audio file and then oversample.
+**Results:** Performed best, with an overall accuracy of 93% with nicely balanced f1 scores.
+
   **Resources relevant to the project:** 
   
    - https://www.youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0 : Audio Processing for Machine Learning.
