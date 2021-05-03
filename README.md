@@ -1,5 +1,5 @@
 # Accent-Detector/Accent-Classifier
-**Objective:**
+## **Objective:**
   - Project to detect accent of an individual in spoken english.
   - Use Machine Learning models to train 4 classes of accents and predict the output of a given audio file.
 
