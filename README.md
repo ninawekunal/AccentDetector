@@ -4,8 +4,8 @@
 
 ##**Table of Content:**
  - Use Machine Learning models to train 4 classes of accents and predict the output of a given audio file.
-    1. [Motivation](#motivation)
-    2. [Dataset](#dataset)
+    1. [Motivation](##motivation)
+    2. [Dataset](##dataset)
     3. [Data Analysis](#data-analysis) and [Pre-Processing.](#pre-preprocessing)
     4. [Audio Processing.](#audio-processing)
     5. [Data Preparation](#data-preparation)
@@ -16,17 +16,23 @@
     10. [Future enhancements.](#future-enhancements)
 
 ##**Motivation:**
-The motivation behind developing this project is
+The motivation behind developing this project is, since I am living as an Indian student in The US, I wanted to improve my american accent to learn more about the culture and blend in. But there was no tool online that could tell me my accent and how well it is. That is when I decided I want to create a tool that could help people like me identify and suggest improvements on their accent.
 
 ##**Dataset:** 
 [This Dataset](https://www.kaggle.com/rtatman/speech-accent-archive) on kaggle.
+ - Since the dataset has few samples, I choose to classify only on 4 accents: (Will improve when I get more samples.)
+    - Indian
+    - American
+    - British
+    - Chinese
 
 ##**Data-Analysis:**
 The dataset contains: 
  - 2172 samples of speakers in total(audio in mp3 format).
  - Samples from 177  different countries.
  - Samples of 214 different languages.
-Each user is speaking the *passage*: 
+ - Each user is speaking the *passage*: 
+
 "Please call Stella.  Ask her to bring these things with her from the store:  Six spoons of fresh snow peas, five thick slabs of blue cheese, and maybe a snack for her brother Bob.  We also need a small plastic snake and a big toy frog for the kids.  She can scoop these things into three red bags, and we will go meet her Wednesday at the train station."
 
 ##**Pre-processing:**
