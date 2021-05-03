@@ -1,40 +1,106 @@
-# AccentDetector
+# Accent-Detector/Accent-Classifier
 **Objective:**
-  - Project to make an android + web app detect accent of any individual. 
-  - Train an individual for a particular accent.
-  - Possibly predict the birthplace of that individual.
+  - Project to detect accent of an individual in spoken english.
 
-**Dataset:** https://www.kaggle.com/rtatman/speech-accent-archive
- - Data contains a speech that is recorded in English by people from different countries and different accent.
- - Data contains male and female speakers speaking the same passage.
- - Data contains speakers from 176 countries.
+##**Table of Content:**
+ - Use Machine Learning models to train 4 classes of accents and predict the output of a given audio file.
+    1. [Motivation](#motivation)
+    2. [Dataset](#dataset)
+    3. [Data Analysis](#data-analysis) and [Pre-Processing.](#pre-preprocessing)
+    4. [Audio Processing.](#audio-processing)
+    5. [Data Preparation](#data-preparation)
+    6. [Training Machine Learning Models.](#training-ml-models)
+    7. [Training Neural Network.](#training-neural-network)
+    8. [Model Performance Comparision](#model-performance-comparision)
+    9. [Techniques to handle imbalance in the dataset.](#handle-imbalance-data)
+    10. [Future enhancements.](#future-enhancements)
 
-**Idea:** 
- - Use Machine Learning models to train all the classes of accents and predict the output of a given audio file.
-    - Get all audio files of a particular accent.
-    - Get the timestamps of each word in the speech and when it is occuring in each audio.
-    - Train all the words in that accent and do that for all the classes.
+##**Motivation:**
+The motivation behind developing this project is
 
-**Tools to use:** 
- - ReactJS + React Native/Babble
- - Flask
- - Jupyter Notebook
- - Tensorflow
- - Audio Processing (Frequency Domain Features + Time Domain Features):
-    - MFCC(Mel Frequency Capstral Coefficent)
-    - Log Mel Spectogram
-    - Harmonic Percussive Source Separation
-    - Audio Waves.
+##**Dataset:** 
+[This Dataset](https://www.kaggle.com/rtatman/speech-accent-archive) on kaggle.
+
+##**Data-Analysis:**
+The dataset contains: 
+ - 2172 samples of speakers in total(audio in mp3 format).
+ - Samples from 177  different countries.
+ - Samples of 214 different languages.
+Each user is speaking the *passage*: 
+"Please call Stella.  Ask her to bring these things with her from the store:  Six spoons of fresh snow peas, five thick slabs of blue cheese, and maybe a snack for her brother Bob.  We also need a small plastic snake and a big toy frog for the kids.  She can scoop these things into three red bags, and we will go meet her Wednesday at the train station."
+
+##**Pre-processing:**
+ - Merged samples from languages in and around India to create "_Indian accent_"(110).
+ - Grouped samples to create "_American"(373), "_British"(65) and "_Chinese_"(88) accents classes.
+ - Removed other samples of audios and from dataframe.
+ - Removed unnecessary columns. (age, birthplace, speakerid, file_missing)
  
- **Questions?:**
-  - How to label the data? Basically we need to know at what time stamp a particular word is being said. 
-      - How to get those timestamp of each word in each audio file under each accent?
-  - What can we do about the remaining words which are not in the dataset? 
-  - Which models should we use to train and predict? 
-  - How can we process the audio files first to tailor it to our model? (Data Processing)
-  - How to improve accuracy of the model and tailor it to detect more words?
-      - Can we add more words to our dataset like for instance: If a user speaks something, store all those words under corresponding accent class.
-  - Gather more data on countries with highest # of english speakers.
+
+##**Audio-Processing:**
+ - Converted all the mp3 files to a "_wav_" format. (uncompressed version).
+ - Trim/pad all the audio files to a standard length of 30 seconds.
+ - Extracted 13 **MFCCs:** Mel Frequency Cepstral Coefficents from each audio file.
+***MFCC*** in a sentence, is a "*representation*" of the vocal tract that produces the sound. Think of it like an x-ray of your mouth.
+ - Extracted MFCCs of an audio file will be of shape (1, 2584, 13)
+ - Add [Gaussian noise](https://medium.com/analytics-vidhya/adding-noise-to-audio-clips-5d8cee24ccb8) to each sample.
+ - Oversample minority classes to handle imbalance in the dataset. 
+ - Dump the data in *json* format to access it later.
+
+##**Data-preparation:**
+ - Load mfccs and targets from json.
+ - Convert it in a 2D format of (1445, 33592) -> (#samples, (2584*13))
+ - Create Train and Test data using _train_test_split_.
+ - Use [SMOTE](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/) (Synthetic Minority Over-Sampling Technique) to balance samples.
+
+##**Training-ML-models:**
+1. Support Vector Machine(SVM):
+ - Using a "*rbf*" kernel SVC.
+ - Metrics: Accuracy of 93% with an amazing f1-score.
+![image](https://user-images.githubusercontent.com/13129747/116898902-f37f8780-ac04-11eb-86a5-95c937679a41.png)
+
+2. Random Forest Classifier(RFC):
+ - Using a RFC of *max_depth=16* and *n_estimators=250*.
+ - Metrics: Accuracy of 92%, slightly lower than SVC, but pretty decent and almost similar f1-scores.
+![image](https://user-images.githubusercontent.com/13129747/116899202-448f7b80-ac05-11eb-8beb-54b3396fb414.png)
+
+3. K-Nearest-Neighbors(KNN):
+ - Using a KNN of *n_neighbors=3*.
+ - Metrics: Accuracy of 76.57% with imbalanced f1-scores. Performs poor compared to "*svc*" and "*rfc*".
+![image](https://user-images.githubusercontent.com/13129747/116899537-a819a900-ac05-11eb-8f83-ffad847bde22.png)
+
+4. Logistic Regression:
+ - Metrics: Accuracy of 87% with an almost balanced f1-score.
+![image](https://user-images.githubusercontent.com/13129747/116899682-da2b0b00-ac05-11eb-9862-b4ef45335a77.png)
+
+##**Training-neural-network:**
+1. Recurrent Neural Network(RNN):
+ - Using Keras's Sequential model with 1 input layer, 3 hidden layers(with dropouts)(*activation=relu*) and 1 output layer(*Softmax activation*).
+ - Using *Adam* optimizer to compile and run it for 50 epochs.
+ - Metrics: Accuracy of 59%. (Disappointing results)
+2. Convolutional Neural Network(CNN):
+ - Using Keras's Sequential model with 1 input layer, 3 convolution layers(with BatchNormalization), 1 Dense Layer(with Dropout) and 1 output layer(*softmax activation*).
+ - Using *Adam* optimizer to compile and run for 30 epochs.
+ - Metrics: Accuracy of 68% on test data. (Performed really poorly on real data sample.)
+
+##**Model-Performance-Comparision:**
+This table compares different models and its metrics.
+| Model | Accuracy | American(f1) | British(f1) | Chinese(f1) | Indian(f1) | 
+| --- | --- | --- | --- | --- | --- |
+| SVM | 93% | 85% | 98% | 99% | 89% |
+| RFC | 92% | 85% | 100% | 96% | 87% |
+| KNN | 76% | 55% | 83% | 89% | 75% |
+| LR | 87% | 79% | 96% | 94% | 82% |
+| RNN | 60% | - | - | - | - |
+| CNN | 68% | - | - | - | - |
+ 
+**Tools/Libraries used:** 
+ - Jupyter Notebook/Google Colab
+ - _Librosa_ for Audio Processing (Frequency Domain Features + Time Domain Features):
+    - MFCC(Mel Frequency Capstral Coefficent)
+ - _Numpy, Pandas_ for Data Processing and Analysis.
+ - _scikit-learn_ for Machine Learning models.
+ - _Tensorflow_ and keras for Deep learning models.
+ 
   
   **Resources relevant to the project:** 
   
