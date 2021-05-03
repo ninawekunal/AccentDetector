@@ -140,6 +140,11 @@ To handle the imbalance in our dataset, I used techniques like:
 
   **Results:** Performed best, with an overall accuracy of 93% with nicely balanced f1 scores.
 
+## **Future Enhancements:**
+Right now, I have made a predictor application on Jupyter Notebook. It works well within the notebook and can classify most of the random samples correctly.
+ - To make this app accessible to more people, I want to create a flask application to create Web API for this and design a website to support it.
+ - To make an android application for mobile users.
+
 **Resources relevant to the project:** 
   
    - https://www.youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0 : Audio Processing for Machine Learning.
