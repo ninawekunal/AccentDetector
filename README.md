@@ -120,25 +120,25 @@ To handle the imbalance in our dataset, I used techniques like:
  - The simplest approach involves duplicating examples in the minority class, although these examples don’t add any new information to the model. 
  - Instead, new examples can be synthesized from the existing examples.
 
-**Results:** SMOTE improved accuracy from 59% to around 65%. (Better, but not acceptable.)
+  **Results:** SMOTE improved accuracy from 59% to around 65%. (Better, but not acceptable.)
 
 2. **Undersampling:**
  - reduces the samples of American(373) to 110 and then trained SVC.
 
-**Results:** Extremely poor accuracy of 41% with poor f1-scores.
+  **Results:** Extremely poor accuracy of 41% with poor f1-scores.
 
 3. **Oversampling:**:
  - Duplicate samples of minority classes to match close to american samples.
  - Get a Duplication ratio: i.e. 373/373 = 1, 373/110 = 3, 373/88 = 4, 373/65=5
  - Dupliate each sample by this duplication ratio.
 
-**Results:** Give a really good training accuracy of 90%, but performed subpar on test data. 
+  **Results:** Give a really good training accuracy of 90%, but performed subpar on test data. 
 
 4. **Oversampling with Noise:**
  - Duplicate samples of minority class in a similar way as above, but
  - Extract a random gaussian noise from the signal, and add it to the audio file and then oversample.
 
-**Results:** Performed best, with an overall accuracy of 93% with nicely balanced f1 scores.
+  **Results:** Performed best, with an overall accuracy of 93% with nicely balanced f1 scores.
 
 **Resources relevant to the project:** 
   
