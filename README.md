@@ -68,16 +68,29 @@ The dataset contains:
 2. **Random Forest Classifier(RFC):**
  - Using a RFC of *max_depth=16* and *n_estimators=250*.
  - Metrics: Accuracy of **92%**, slightly lower than SVC, but pretty decent and almost similar f1-scores.
-![image](https://user-images.githubusercontent.com/13129747/116899202-448f7b80-ac05-11eb-8beb-54b3396fb414.png)
+
+      <img src="https://user-images.githubusercontent.com/13129747/116899202-448f7b80-ac05-11eb-8beb-54b3396fb414.png" width=500 height=300 />
 
 3. **K-Nearest-Neighbors(KNN):**
  - Using a KNN of *n_neighbors=3*.
  - Metrics: Accuracy of **76.57%** with imbalanced f1-scores. Performs poor compared to "*svc*" and "*rfc*".
-![image](https://user-images.githubusercontent.com/13129747/116899537-a819a900-ac05-11eb-8f83-ffad847bde22.png)
+
+      <img src="https://user-images.githubusercontent.com/13129747/116899537-a819a900-ac05-11eb-8f83-ffad847bde22.png" width=500 height=300 />
 
 4. **Logistic Regression(LR):**
  - Metrics: Accuracy of **87%** with an almost balanced f1-score.
-![image](https://user-images.githubusercontent.com/13129747/116899682-da2b0b00-ac05-11eb-9862-b4ef45335a77.png)
+
+      <img src="https://user-images.githubusercontent.com/13129747/116899682-da2b0b00-ac05-11eb-9862-b4ef45335a77.png" width=500 height=300 />
+
+##**Model-Performance-Comparision:**
+This table compares different models and its metrics.
+| Model | Accuracy | American(f1) | British(f1) | Chinese(f1) | Indian(f1) | 
+| --- | --- | --- | --- | --- | --- |
+| SVM | 93% | 85% | 98% | 99% | 89% |
+| RFC | 92% | 85% | 100% | 96% | 87% |
+| KNN | 76% | 55% | 83% | 89% | 75% |
+| LR | 87% | 79% | 96% | 94% | 82% |
+**Note:** We can see that SVM performs best here.
 
 ##**Training-neural-network:**
 1. **Recurrent Neural Network(RNN):**
@@ -89,17 +102,6 @@ The dataset contains:
  - Using *Adam* optimizer to compile and run for 30 epochs.
  - Metrics: Accuracy of **68%** on test data. (Performed really poorly on real data sample.)
 
-##**Model-Performance-Comparision:**
-This table compares different models and its metrics.
-| Model | Accuracy | American(f1) | British(f1) | Chinese(f1) | Indian(f1) | 
-| --- | --- | --- | --- | --- | --- |
-| SVM | 93% | 85% | 98% | 99% | 89% |
-| RFC | 92% | 85% | 100% | 96% | 87% |
-| KNN | 76% | 55% | 83% | 89% | 75% |
-| LR | 87% | 79% | 96% | 94% | 82% |
-| RNN | 60% | - | - | - | - |
-| CNN | 68% | - | - | - | - |
- 
 **Tools/Libraries used:** 
  - Jupyter Notebook/Google Colab
  - _Librosa_ for Audio Processing (Frequency Domain Features + Time Domain Features):
