@@ -1,24 +1,33 @@
 # Accent-Detector/Accent-Classifier
 **Objective:**
   - Project to detect accent of an individual in spoken english.
+  - Use Machine Learning models to train 4 classes of accents and predict the output of a given audio file.
 
-##**Table of Content:**
- - Use Machine Learning models to train 4 classes of accents and predict the output of a given audio file.
-    1. [Motivation](##motivation)
-    2. [Dataset](##dataset)
-    3. [Data Analysis](#data-analysis) and [Pre-Processing.](#pre-preprocessing)
-    4. [Audio Processing.](#audio-processing)
-    5. [Data Preparation](#data-preparation)
-    6. [Training Machine Learning Models.](#training-ml-models)
-    7. [Training Neural Network.](#training-neural-network)
-    8. [Model Performance Comparision](#model-performance-comparision)
-    9. [Techniques to handle imbalance in the dataset.](#handle-imbalance-data)
-    10. [Future enhancements.](#future-enhancements)
+## **Table of Content:**
+1. [Motivation](#motivation)
+2. [Tools Used](#tools-used)
+3. [Dataset](#dataset)
+4. [Data Analysis](#data-analysis) and [Pre-Processing.](#pre-preprocessing)
+5. [Audio Processing.](#audio-processing)
+6. [Data Preparation](#data-preparation)
+7. [Training Machine Learning Models.](#training-ml-models)
+8. [Model Performance Comparision](#model-performance-comparision)
+9. [Training Neural Network.](#training-neural-network)
+10. [Techniques to handle imbalance in the dataset.](#handle-imbalance-data)
+11. [Future enhancements.](#future-enhancements)
 
-##**Motivation:**
+## **Motivation:**
 The motivation behind developing this project is, since I am living as an Indian student in The US, I wanted to improve my american accent to learn more about the culture and blend in. But there was no tool online that could tell me my accent and how well it is. That is when I decided I want to create a tool that could help people like me identify and suggest improvements on their accent.
 
-##**Dataset:** 
+## **Tools used:** 
+ - Jupyter Notebook/Google Colab
+ - _Librosa_ for Audio Processing (Frequency Domain Features + Time Domain Features):
+    - MFCC(Mel Frequency Capstral Coefficent)
+ - _Numpy, Pandas_ for Data Processing and Analysis.
+ - _scikit-learn_ for Machine Learning models.
+ - _Tensorflow_ and keras for Deep learning models.
+
+## **Dataset:** 
 [This Dataset](https://www.kaggle.com/rtatman/speech-accent-archive) on kaggle.
  - Since the dataset has few samples, I choose to classify only on 4 accents: (Will improve when I get more samples.)
     - Indian
@@ -26,7 +35,7 @@ The motivation behind developing this project is, since I am living as an Indian
     - British
     - Chinese
 
-##**Data-Analysis:**
+## **Data Analysis:**
 The dataset contains: 
  - 2172 samples of speakers in total(audio in mp3 format).
  - Samples from 177  different countries.
@@ -35,14 +44,14 @@ The dataset contains:
 
 "Please call Stella.  Ask her to bring these things with her from the store:  Six spoons of fresh snow peas, five thick slabs of blue cheese, and maybe a snack for her brother Bob.  We also need a small plastic snake and a big toy frog for the kids.  She can scoop these things into three red bags, and we will go meet her Wednesday at the train station."
 
-##**Pre-processing:**
+## **Pre processing:**
  - Merged samples from languages in and around India to create "_Indian accent_"(110).
  - Grouped samples to create "_American"(373), "_British"(65) and "_Chinese_"(88) accents classes.
  - Removed other samples of audios and from dataframe.
  - Removed unnecessary columns. (age, birthplace, speakerid, file_missing)
  
 
-##**Audio-Processing:**
+## **Audio Processing:**
  - Converted all the mp3 files to a "_wav_" format. (uncompressed version).
  - Trim/pad all the audio files to a standard length of 30 seconds.
  - Extracted 13 **MFCCs:** Mel Frequency Cepstral Coefficents from each audio file.
@@ -52,13 +61,13 @@ The dataset contains:
  - Oversample minority classes to handle imbalance in the dataset. 
  - Dump the data in *json* format to access it later.
 
-##**Data-preparation:**
+## **Data preparation:**
  - Load mfccs and targets from json.
  - Convert it in a 2D format of (1445, 33592) -> (#samples, (2584*13))
  - Create Train and Test data using _train_test_split_.
  - Use [SMOTE](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/) (Synthetic Minority Over-Sampling Technique) to balance samples.
 
-##**Training-ML-models:**
+## **Training ML models:**
 1. **Support Vector Machine(SVM):**
  - Using a "*rbf*" kernel SVC.
  - Metrics: Accuracy of **93%** with an amazing f1-score.
@@ -82,7 +91,7 @@ The dataset contains:
 
       <img src="https://user-images.githubusercontent.com/13129747/116899682-da2b0b00-ac05-11eb-9862-b4ef45335a77.png" width=500 height=300 />
 
-##**Model-Performance-Comparision:**
+## **Model Performance Comparision:**
 This table compares different models and its metrics.
 | Model | Accuracy | American(f1) | British(f1) | Chinese(f1) | Indian(f1) | 
 | --- | --- | --- | --- | --- | --- |
@@ -92,7 +101,7 @@ This table compares different models and its metrics.
 | LR | 87% | 79% | 96% | 94% | 82% |
 **Note:** We can see that SVM performs best here.
 
-##**Training-neural-network:**
+## **Training neural network:**
 1. **Recurrent Neural Network(RNN):**
  - Using Keras's Sequential model with 1 input layer, 3 hidden layers(with dropouts)(*activation=relu*) and 1 output layer(*Softmax activation*).
  - Using *Adam* optimizer to compile and run it for 50 epochs.
@@ -101,14 +110,6 @@ This table compares different models and its metrics.
  - Using Keras's Sequential model with 1 input layer, 3 convolution layers(with BatchNormalization), 1 Dense Layer(with Dropout) and 1 output layer(*softmax activation*).
  - Using *Adam* optimizer to compile and run for 30 epochs.
  - Metrics: Accuracy of **68%** on test data. (Performed really poorly on real data sample.)
-
-**Tools/Libraries used:** 
- - Jupyter Notebook/Google Colab
- - _Librosa_ for Audio Processing (Frequency Domain Features + Time Domain Features):
-    - MFCC(Mel Frequency Capstral Coefficent)
- - _Numpy, Pandas_ for Data Processing and Analysis.
- - _scikit-learn_ for Machine Learning models.
- - _Tensorflow_ and keras for Deep learning models.
  
   
   **Resources relevant to the project:** 
