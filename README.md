@@ -62,7 +62,8 @@ The dataset contains:
 1. **Support Vector Machine(SVM):**
  - Using a "*rbf*" kernel SVC.
  - Metrics: Accuracy of **93%** with an amazing f1-score.
-      <img src="https://user-images.githubusercontent.com/13129747/116898902-f37f8780-ac04-11eb-86a5-95c937679a41.png" width=50 height=50 />
+
+      <img src="https://user-images.githubusercontent.com/13129747/116898902-f37f8780-ac04-11eb-86a5-95c937679a41.png" width=300 height=300 />
 
 2. **Random Forest Classifier(RFC):**
  - Using a RFC of *max_depth=16* and *n_estimators=250*.
