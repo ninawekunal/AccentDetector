@@ -13,7 +13,7 @@
 7. [Training Machine Learning Models.](#training-ml-models)
 8. [Model Performance Comparision](#model-performance-comparision)
 9. [Training Neural Network.](#training-neural-network)
-10. [Techniques to handle imbalance in the dataset.](#handle-imbalance-data)
+10. [Techniques to handle imbalance in the dataset.](#Techniques-used-to-handle-imbalanced-data)
 11. [Future enhancements.](#future-enhancements)
 
 ## **Motivation:**
