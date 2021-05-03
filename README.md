@@ -59,34 +59,34 @@ The dataset contains:
  - Use [SMOTE](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/) (Synthetic Minority Over-Sampling Technique) to balance samples.
 
 ##**Training-ML-models:**
-1. Support Vector Machine(SVM):
+1. **Support Vector Machine(SVM):**
  - Using a "*rbf*" kernel SVC.
- - Metrics: Accuracy of 93% with an amazing f1-score.
-![image](https://user-images.githubusercontent.com/13129747/116898902-f37f8780-ac04-11eb-86a5-95c937679a41.png)
+ - Metrics: Accuracy of **93%** with an amazing f1-score.
+![image](https://user-images.githubusercontent.com/13129747/116898902-f37f8780-ac04-11eb-86a5-95c937679a41.png = 200x200)
 
-2. Random Forest Classifier(RFC):
+2. **Random Forest Classifier(RFC):**
  - Using a RFC of *max_depth=16* and *n_estimators=250*.
- - Metrics: Accuracy of 92%, slightly lower than SVC, but pretty decent and almost similar f1-scores.
+ - Metrics: Accuracy of **92%**, slightly lower than SVC, but pretty decent and almost similar f1-scores.
 ![image](https://user-images.githubusercontent.com/13129747/116899202-448f7b80-ac05-11eb-8beb-54b3396fb414.png)
 
-3. K-Nearest-Neighbors(KNN):
+3. **K-Nearest-Neighbors(KNN):**
  - Using a KNN of *n_neighbors=3*.
- - Metrics: Accuracy of 76.57% with imbalanced f1-scores. Performs poor compared to "*svc*" and "*rfc*".
+ - Metrics: Accuracy of **76.57%** with imbalanced f1-scores. Performs poor compared to "*svc*" and "*rfc*".
 ![image](https://user-images.githubusercontent.com/13129747/116899537-a819a900-ac05-11eb-8f83-ffad847bde22.png)
 
-4. Logistic Regression:
- - Metrics: Accuracy of 87% with an almost balanced f1-score.
+4. **Logistic Regression(LR):**
+ - Metrics: Accuracy of **87%** with an almost balanced f1-score.
 ![image](https://user-images.githubusercontent.com/13129747/116899682-da2b0b00-ac05-11eb-9862-b4ef45335a77.png)
 
 ##**Training-neural-network:**
-1. Recurrent Neural Network(RNN):
+1. **Recurrent Neural Network(RNN):**
  - Using Keras's Sequential model with 1 input layer, 3 hidden layers(with dropouts)(*activation=relu*) and 1 output layer(*Softmax activation*).
  - Using *Adam* optimizer to compile and run it for 50 epochs.
- - Metrics: Accuracy of 59%. (Disappointing results)
-2. Convolutional Neural Network(CNN):
+ - Metrics: Accuracy of **59%**. (Disappointing results)
+2. **Convolutional Neural Network(CNN):**
  - Using Keras's Sequential model with 1 input layer, 3 convolution layers(with BatchNormalization), 1 Dense Layer(with Dropout) and 1 output layer(*softmax activation*).
  - Using *Adam* optimizer to compile and run for 30 epochs.
- - Metrics: Accuracy of 68% on test data. (Performed really poorly on real data sample.)
+ - Metrics: Accuracy of **68%** on test data. (Performed really poorly on real data sample.)
 
 ##**Model-Performance-Comparision:**
 This table compares different models and its metrics.
