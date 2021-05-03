@@ -62,7 +62,7 @@ The dataset contains:
 1. **Support Vector Machine(SVM):**
  - Using a "*rbf*" kernel SVC.
  - Metrics: Accuracy of **93%** with an amazing f1-score.
-![image](https://user-images.githubusercontent.com/13129747/116898902-f37f8780-ac04-11eb-86a5-95c937679a41.png = 200x200)
+      <img src="https://user-images.githubusercontent.com/13129747/116898902-f37f8780-ac04-11eb-86a5-95c937679a41.png" width=50 height=50 />
 
 2. **Random Forest Classifier(RFC):**
  - Using a RFC of *max_depth=16* and *n_estimators=250*.
@@ -90,14 +90,14 @@ The dataset contains:
 
 ##**Model-Performance-Comparision:**
 This table compares different models and its metrics.
-| Model | Accuracy | American(f1) | British(f1) | Chinese(f1) | Indian(f1) | 
-| --- | --- | --- | --- | --- | --- |
-| SVM | 93% | 85% | 98% | 99% | 89% |
-| RFC | 92% | 85% | 100% | 96% | 87% |
-| KNN | 76% | 55% | 83% | 89% | 75% |
-| LR | 87% | 79% | 96% | 94% | 82% |
-| RNN | 60% | - | - | - | - |
-| CNN | 68% | - | - | - | - |
+                      | Model | Accuracy | American(f1) | British(f1) | Chinese(f1) | Indian(f1) | 
+                      | --- | --- | --- | --- | --- | --- |
+                      | SVM | 93% | 85% | 98% | 99% | 89% |
+                      | RFC | 92% | 85% | 100% | 96% | 87% |
+                      | KNN | 76% | 55% | 83% | 89% | 75% |
+                      | LR | 87% | 79% | 96% | 94% | 82% |
+                      | RNN | 60% | - | - | - | - |
+                      | CNN | 68% | - | - | - | - |
  
 **Tools/Libraries used:** 
  - Jupyter Notebook/Google Colab
