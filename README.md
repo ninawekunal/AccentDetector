@@ -99,6 +99,7 @@ This table compares different models and its metrics.
 | RFC | 92% | 85% | 100% | 96% | 87% |
 | KNN | 76% | 55% | 83% | 89% | 75% |
 | LR | 87% | 79% | 96% | 94% | 82% |
+
 **Note:** We can see that SVM performs best here.
 
 ## **Training neural network:**
